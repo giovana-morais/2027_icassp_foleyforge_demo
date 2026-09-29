@@ -1,0 +1,16 @@
+rank,set,example_id,instruction,versions
+1,B,testB_mixed-0004_dsp_qwen_vague,"Distant, submerged vibe",input|our_tf_nit09_rg05|sao_instruct|sdedit|sdedit_rms|echoedit_plus
+2,B,testB_mixed-0008_natural_qwen_specific,"Make the creaking sound much heavier and deeper, like the massive wooden timbers of a giant ship groaning loudly.",input|our_tf_nit09_rg05|sao_instruct|sdedit|sdedit_rms|echoedit_plus
+4,B,testB_mixed-0016_dsp_qwen_vague,"Give it a distant, filtered sound.",input|our_tf_nit09_rg05|sao_instruct|sdedit|sdedit_rms|echoedit_plus
+5,B,testB_mixed-0018_natural_gemini_specific,"Make the insect sound like a much larger, heavier bug by drawing out the wingbeats so you can hear each individual flap instead of a fast buzz.",input|our_tf_nit09_rg05|sao_instruct|sdedit|sdedit_rms|echoedit_plus
+6,B,testB_mixed-0020_dsp_gemini_specific,"Cut the low-end rumble with a high-pass filter to shift the texture from heavy rocks to lighter, thinner gravel.",input|our_tf_nit09_rg05|sao_instruct|sdedit|sdedit_rms|echoedit_plus
+8,B,testB_mixed-0027_natural_qwen_vague,Make it sound much closer and more threatening.,input|our_tf_nit09_rg05|sao_instruct|sdedit|sdedit_rms|echoedit_plus
+10,B,testB_mixed-0031_natural_gemini_concise,"Make this sound like a wet, fleshy stab.",input|our_tf_nit09_rg05|sao_instruct|sdedit|sdedit_rms|echoedit_plus
+11,B,testB_mixed-0032_natural_qwen_specific,"Make the farting noise sound more intense and aggressive, like the bag is being squeezed much harder to push the air out.",input|our_tf_nit09_rg05|sao_instruct|sdedit|sdedit_rms|echoedit_plus
+13,B,testB_mixed-0041_natural_gemini_specific,"Make the impacts sound firmer and slightly bouncier, like the jar is being struck by a solid rubber mallet instead of a soft one.",input|our_tf_nit09_rg05|sao_instruct|sdedit|sdedit_rms|echoedit_plus
+14,B,testB_mixed-0044_dsp_qwen_vague,Make the beep wobbly and psychedelic.,input|our_tf_nit09_rg05|sao_instruct|sdedit|sdedit_rms|echoedit_plus
+15,B,testB_mixed-0046_dsp_qwen_specific,"Add a large hall reverb with a long decay time to create a cavernous, echoing impression of the pouring oil.",input|our_tf_nit09_rg05|sao_instruct|sdedit|sdedit_rms|echoedit_plus
+16,B,testB_mixed-0051_custom_human_vague,Make it sound like it's coming from the bottom of the ocean.,input|our_tf_nit09_rg05|sao_instruct|sdedit|sdedit_rms|echoedit_plus
+18,B,testB_mixed-0056_dsp_qwen_vague,More aggressive and immediate impact.,input|our_tf_nit09_rg05|sao_instruct|sdedit|sdedit_rms|echoedit_plus
+19,B,testB_mixed-0074_natural_gemini_specific,"Replace the short, sharp barks with a long, drawn-out howl, like a wolf calling out in the forest.",input|our_tf_nit09_rg05|sao_instruct|sdedit|sdedit_rms|echoedit_plus
+20,B,testB_mixed-0080_custom_human_concise,I want this to be splashier,input|our_tf_nit09_rg05|sao_instruct|sdedit|sdedit_rms|echoedit_plus

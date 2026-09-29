@@ -1,8 +1,279 @@
 <!DOCTYPE html>
-<html>
-<body>
-
-    <p> coming soon </p>
-</body>
+<html lang="en">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="style.css">
+        <title>FoleyForge</title>
+    </head>
+    <header>
+        <h2 id="title">FoleyForge: Free-form, Controllable, Rectified-flow Editing of Sound Effects</h2>
+        <h3 id="authors">
+            Giovana Morais<sup>1,2</sup>,
+            Hugo Flores García<sup>1</sup>,
+            Prem Seetharaman<sup>1</sup>,
+            Johannes Imort<sup>1</sup>, 
+            Justin Salamon<sup>1</sup>,
+            Magdalena Fuentes<sup>2</sup>, 
+            Oriol Nieto<sup>1</sup></h3>
+        <h4 id="institutions"><sup>1</sup>Adobe, <sup>2</sup>New York University</h3>
+    </header>
+    <body>
+        <nav id="menu">
+            <a href="">paper</a>
+            <!-- <a href="#results">results</a> -->
+            <a href="#ablations">ablations</a>
+            <a href="#model-comparison">model comparison</a>
+            <a href="#model-demo">try it yourself!</a>
+            <a href="#bibtex-entry">cite</a>
+        </nav>
+        <div id="abstract">
+            <h2>Abstract</h2>
+            We present FoleyForge, a generative model for instruction-based editing of sound effects. Given an input clip and a free-form instruction describing the desired change, it applies the edit while preserving the input's identity. A single model handles semantic, stylistic, and DSP-like changes. We introduce a data pipeline that guides an audio language model to author both DSP-based acoustic edits and similarity-preserving semantic edits, thus addressing the lack of publicly available audio editing data. Such data is then used to fine-tune a rectified-flow audio generation model, which we extend to expose attribute controls for loudness change, edit strength, and an input-derived contour envelope, each tunable via classifier-free guidance, yielding a more expressive editing model. FoleyForge achieves state-of-the-art instruction adherence at competitive audio quality and source faithfulness.
+            <img src="assets/image/full_pipeline_v3.png" id="full_pipeline" alt="diagram showcasing model pipeline.">
+        </div>
+        <!-- <div id="results"> -->
+        <!--     <h2>Results</h2> -->
+        <!-- </div> -->
+        <div id="ablations">
+            <h2>Ablations</h2>
+            <p class="section-note">For a single pair of input audio and edit instruction, we show </p>
+            Input audio:
+            <br>
+            Edit Instruction:
+            <br>
+<!-- GENERATED:ablation-specs START (placeholder images; swap srcs for real per-parameter spectrograms) -->
+            <h3>Loudness</h3>
+            <div class="spec-row">
+                <figure class="spec-item"><img src="assets/image/placeholder_spec.png" alt="Loudness ablation spectrogram 1."><figcaption>1</figcaption></figure>
+                <figure class="spec-item"><img src="assets/image/placeholder_spec.png" alt="Loudness ablation spectrogram 2."><figcaption>2</figcaption></figure>
+                <figure class="spec-item"><img src="assets/image/placeholder_spec.png" alt="Loudness ablation spectrogram 3."><figcaption>3</figcaption></figure>
+                <figure class="spec-item"><img src="assets/image/placeholder_spec.png" alt="Loudness ablation spectrogram 4."><figcaption>4</figcaption></figure>
+                <figure class="spec-item"><img src="assets/image/placeholder_spec.png" alt="Loudness ablation spectrogram 5."><figcaption>5</figcaption></figure>
+            </div>
+            <h3>SILA</h3>
+            <div class="spec-row">
+                <figure class="spec-item"><img src="assets/image/placeholder_spec.png" alt="SILA ablation spectrogram 1.">
+                    <figcaption>None</figcaption>
+                </figure>
+                <figure class="spec-item">
+                    <img src="assets/image/placeholder_spec.png" alt="SILA ablation spectrogram 2.">
+                    <figcaption>Subtle</figcaption>
+                </figure>
+                <figure class="spec-item"><img src="assets/image/placeholder_spec.png" alt="SILA ablation spectrogram 1.">
+                    <figcaption>Moderate</figcaption>
+                </figure>
+                <figure class="spec-item">
+                    <img src="assets/image/placeholder_spec.png" alt="SILA ablation spectrogram 2.">
+                    <figcaption>Pronounced</figcaption>
+                </figure>
+                <figure class="spec-item">
+                    <img src="assets/image/placeholder_spec.png" alt="SILA ablation spectrogram 2.">
+                    <figcaption>Drastic</figcaption>
+                </figure>
+            </div>
+            <h3>Edit Strength</h3>
+            <div class="spec-row">
+                <figure class="spec-item"><img src="assets/image/placeholder_spec.png" alt="Edit strength ablation spectrogram 1."><figcaption>1</figcaption></figure>
+                <figure class="spec-item"><img src="assets/image/placeholder_spec.png" alt="Edit strength ablation spectrogram 2."><figcaption>2</figcaption></figure>
+                <figure class="spec-item"><img src="assets/image/placeholder_spec.png" alt="Edit strength ablation spectrogram 3."><figcaption>3</figcaption></figure>
+                <figure class="spec-item"><img src="assets/image/placeholder_spec.png" alt="Edit strength ablation spectrogram 4."><figcaption>4</figcaption></figure>
+                <figure class="spec-item">
+                    <img src="assets/image/placeholder_spec.png" alt="Edit strength ablation spectrogram 5."><figcaption>5</figcaption></figure>
+            </div>
+            <h3>Envelope Following</h3>
+            <div class="spec-row">
+                <figure class="spec-item">
+                        <img src="assets/image/placeholder_spec.png" alt="Envelope following ablation spectrogram 4.">
+                        <figcaption>On</figcaption>
+                </figure>
+                <figure class="spec-item">
+                    <img src="assets/image/placeholder_spec.png" alt="Envelope following ablation spectrogram 5.">
+                    <figcaption>Off</figcaption>
+                </figure>
+            </div>
+<!-- GENERATED:ablation-specs END -->
+        </div>
+        <div id="model-comparison">
+            <h2>Model Comparison</h2>
+            <p class="section-note">Each block shows the edit instruction, followed by the input clip and the output of every system for that instruction.</p>
+            <div class="table-scroll">
+<!-- GENERATED:comparison-table START (do not hand-edit; run scripts/generate_comparison_table.py) -->
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Input</th>
+                        <th>SAO</th>
+                        <th>EchoEdit+</th>
+                        <th>SDEdit+Sketch</th>
+                        <th class="ours">FoleyForge (ours)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="instruction-row">
+                        <th colspan="5" scope="colgroup">Instruction: Distant, submerged vibe</th>
+                    </tr>
+                    <tr class="audio-row">
+                        <td data-label="Input"><audio controls preload="none" src="assets/listening-test-v4/01_testB_mixed-0004_dsp_qwen_vague/input.wav"></audio></td>
+                        <td data-label="SAO"><audio controls preload="none" src="assets/listening-test-v4/01_testB_mixed-0004_dsp_qwen_vague/sao_instruct.wav"></audio></td>
+                        <td data-label="EchoEdit+"><audio controls preload="none" src="assets/listening-test-v4/01_testB_mixed-0004_dsp_qwen_vague/echoedit_plus.wav"></audio></td>
+                        <td data-label="SDEdit+Sketch"><audio controls preload="none" src="assets/listening-test-v4/01_testB_mixed-0004_dsp_qwen_vague/sdedit_rms.wav"></audio></td>
+                        <td class="ours" data-label="FoleyForge (ours)"><audio controls preload="none" src="assets/listening-test-v4/01_testB_mixed-0004_dsp_qwen_vague/our_tf_nit09_rg05.wav"></audio></td>
+                    </tr>
+                    <tr class="instruction-row">
+                        <th colspan="5" scope="colgroup">Instruction: Make the creaking sound much heavier and deeper, like the massive wooden timbers of a giant ship groaning loudly.</th>
+                    </tr>
+                    <tr class="audio-row">
+                        <td data-label="Input"><audio controls preload="none" src="assets/listening-test-v4/02_testB_mixed-0008_natural_qwen_specific/input.wav"></audio></td>
+                        <td data-label="SAO"><audio controls preload="none" src="assets/listening-test-v4/02_testB_mixed-0008_natural_qwen_specific/sao_instruct.wav"></audio></td>
+                        <td data-label="EchoEdit+"><audio controls preload="none" src="assets/listening-test-v4/02_testB_mixed-0008_natural_qwen_specific/echoedit_plus.wav"></audio></td>
+                        <td data-label="SDEdit+Sketch"><audio controls preload="none" src="assets/listening-test-v4/02_testB_mixed-0008_natural_qwen_specific/sdedit_rms.wav"></audio></td>
+                        <td class="ours" data-label="FoleyForge (ours)"><audio controls preload="none" src="assets/listening-test-v4/02_testB_mixed-0008_natural_qwen_specific/our_tf_nit09_rg05.wav"></audio></td>
+                    </tr>
+                    <tr class="instruction-row">
+                        <th colspan="5" scope="colgroup">Instruction: Give it a distant, filtered sound.</th>
+                    </tr>
+                    <tr class="audio-row">
+                        <td data-label="Input"><audio controls preload="none" src="assets/listening-test-v4/04_testB_mixed-0016_dsp_qwen_vague/input.wav"></audio></td>
+                        <td data-label="SAO"><audio controls preload="none" src="assets/listening-test-v4/04_testB_mixed-0016_dsp_qwen_vague/sao_instruct.wav"></audio></td>
+                        <td data-label="EchoEdit+"><audio controls preload="none" src="assets/listening-test-v4/04_testB_mixed-0016_dsp_qwen_vague/echoedit_plus.wav"></audio></td>
+                        <td data-label="SDEdit+Sketch"><audio controls preload="none" src="assets/listening-test-v4/04_testB_mixed-0016_dsp_qwen_vague/sdedit_rms.wav"></audio></td>
+                        <td class="ours" data-label="FoleyForge (ours)"><audio controls preload="none" src="assets/listening-test-v4/04_testB_mixed-0016_dsp_qwen_vague/our_tf_nit09_rg05.wav"></audio></td>
+                    </tr>
+                    <tr class="instruction-row">
+                        <th colspan="5" scope="colgroup">Instruction: Make the insect sound like a much larger, heavier bug by drawing out the wingbeats so you can hear each individual flap instead of a fast buzz.</th>
+                    </tr>
+                    <tr class="audio-row">
+                        <td data-label="Input"><audio controls preload="none" src="assets/listening-test-v4/05_testB_mixed-0018_natural_gemini_specific/input.wav"></audio></td>
+                        <td data-label="SAO"><audio controls preload="none" src="assets/listening-test-v4/05_testB_mixed-0018_natural_gemini_specific/sao_instruct.wav"></audio></td>
+                        <td data-label="EchoEdit+"><audio controls preload="none" src="assets/listening-test-v4/05_testB_mixed-0018_natural_gemini_specific/echoedit_plus.wav"></audio></td>
+                        <td data-label="SDEdit+Sketch"><audio controls preload="none" src="assets/listening-test-v4/05_testB_mixed-0018_natural_gemini_specific/sdedit_rms.wav"></audio></td>
+                        <td class="ours" data-label="FoleyForge (ours)"><audio controls preload="none" src="assets/listening-test-v4/05_testB_mixed-0018_natural_gemini_specific/our_tf_nit09_rg05.wav"></audio></td>
+                    </tr>
+                    <tr class="instruction-row">
+                        <th colspan="5" scope="colgroup">Instruction: Cut the low-end rumble with a high-pass filter to shift the texture from heavy rocks to lighter, thinner gravel.</th>
+                    </tr>
+                    <tr class="audio-row">
+                        <td data-label="Input"><audio controls preload="none" src="assets/listening-test-v4/06_testB_mixed-0020_dsp_gemini_specific/input.wav"></audio></td>
+                        <td data-label="SAO"><audio controls preload="none" src="assets/listening-test-v4/06_testB_mixed-0020_dsp_gemini_specific/sao_instruct.wav"></audio></td>
+                        <td data-label="EchoEdit+"><audio controls preload="none" src="assets/listening-test-v4/06_testB_mixed-0020_dsp_gemini_specific/echoedit_plus.wav"></audio></td>
+                        <td data-label="SDEdit+Sketch"><audio controls preload="none" src="assets/listening-test-v4/06_testB_mixed-0020_dsp_gemini_specific/sdedit_rms.wav"></audio></td>
+                        <td class="ours" data-label="FoleyForge (ours)"><audio controls preload="none" src="assets/listening-test-v4/06_testB_mixed-0020_dsp_gemini_specific/our_tf_nit09_rg05.wav"></audio></td>
+                    </tr>
+                    <tr class="instruction-row">
+                        <th colspan="5" scope="colgroup">Instruction: Make it sound much closer and more threatening.</th>
+                    </tr>
+                    <tr class="audio-row">
+                        <td data-label="Input"><audio controls preload="none" src="assets/listening-test-v4/08_testB_mixed-0027_natural_qwen_vague/input.wav"></audio></td>
+                        <td data-label="SAO"><audio controls preload="none" src="assets/listening-test-v4/08_testB_mixed-0027_natural_qwen_vague/sao_instruct.wav"></audio></td>
+                        <td data-label="EchoEdit+"><audio controls preload="none" src="assets/listening-test-v4/08_testB_mixed-0027_natural_qwen_vague/echoedit_plus.wav"></audio></td>
+                        <td data-label="SDEdit+Sketch"><audio controls preload="none" src="assets/listening-test-v4/08_testB_mixed-0027_natural_qwen_vague/sdedit_rms.wav"></audio></td>
+                        <td class="ours" data-label="FoleyForge (ours)"><audio controls preload="none" src="assets/listening-test-v4/08_testB_mixed-0027_natural_qwen_vague/our_tf_nit09_rg05.wav"></audio></td>
+                    </tr>
+                    <tr class="instruction-row">
+                        <th colspan="5" scope="colgroup">Instruction: Make this sound like a wet, fleshy stab.</th>
+                    </tr>
+                    <tr class="audio-row">
+                        <td data-label="Input"><audio controls preload="none" src="assets/listening-test-v4/10_testB_mixed-0031_natural_gemini_concise/input.wav"></audio></td>
+                        <td data-label="SAO"><audio controls preload="none" src="assets/listening-test-v4/10_testB_mixed-0031_natural_gemini_concise/sao_instruct.wav"></audio></td>
+                        <td data-label="EchoEdit+"><audio controls preload="none" src="assets/listening-test-v4/10_testB_mixed-0031_natural_gemini_concise/echoedit_plus.wav"></audio></td>
+                        <td data-label="SDEdit+Sketch"><audio controls preload="none" src="assets/listening-test-v4/10_testB_mixed-0031_natural_gemini_concise/sdedit_rms.wav"></audio></td>
+                        <td class="ours" data-label="FoleyForge (ours)"><audio controls preload="none" src="assets/listening-test-v4/10_testB_mixed-0031_natural_gemini_concise/our_tf_nit09_rg05.wav"></audio></td>
+                    </tr>
+                    <tr class="instruction-row">
+                        <th colspan="5" scope="colgroup">Instruction: Make the farting noise sound more intense and aggressive, like the bag is being squeezed much harder to push the air out.</th>
+                    </tr>
+                    <tr class="audio-row">
+                        <td data-label="Input"><audio controls preload="none" src="assets/listening-test-v4/11_testB_mixed-0032_natural_qwen_specific/input.wav"></audio></td>
+                        <td data-label="SAO"><audio controls preload="none" src="assets/listening-test-v4/11_testB_mixed-0032_natural_qwen_specific/sao_instruct.wav"></audio></td>
+                        <td data-label="EchoEdit+"><audio controls preload="none" src="assets/listening-test-v4/11_testB_mixed-0032_natural_qwen_specific/echoedit_plus.wav"></audio></td>
+                        <td data-label="SDEdit+Sketch"><audio controls preload="none" src="assets/listening-test-v4/11_testB_mixed-0032_natural_qwen_specific/sdedit_rms.wav"></audio></td>
+                        <td class="ours" data-label="FoleyForge (ours)"><audio controls preload="none" src="assets/listening-test-v4/11_testB_mixed-0032_natural_qwen_specific/our_tf_nit09_rg05.wav"></audio></td>
+                    </tr>
+                    <tr class="instruction-row">
+                        <th colspan="5" scope="colgroup">Instruction: Make the impacts sound firmer and slightly bouncier, like the jar is being struck by a solid rubber mallet instead of a soft one.</th>
+                    </tr>
+                    <tr class="audio-row">
+                        <td data-label="Input"><audio controls preload="none" src="assets/listening-test-v4/13_testB_mixed-0041_natural_gemini_specific/input.wav"></audio></td>
+                        <td data-label="SAO"><audio controls preload="none" src="assets/listening-test-v4/13_testB_mixed-0041_natural_gemini_specific/sao_instruct.wav"></audio></td>
+                        <td data-label="EchoEdit+"><audio controls preload="none" src="assets/listening-test-v4/13_testB_mixed-0041_natural_gemini_specific/echoedit_plus.wav"></audio></td>
+                        <td data-label="SDEdit+Sketch"><audio controls preload="none" src="assets/listening-test-v4/13_testB_mixed-0041_natural_gemini_specific/sdedit_rms.wav"></audio></td>
+                        <td class="ours" data-label="FoleyForge (ours)"><audio controls preload="none" src="assets/listening-test-v4/13_testB_mixed-0041_natural_gemini_specific/our_tf_nit09_rg05.wav"></audio></td>
+                    </tr>
+                    <tr class="instruction-row">
+                        <th colspan="5" scope="colgroup">Instruction: Make the beep wobbly and psychedelic.</th>
+                    </tr>
+                    <tr class="audio-row">
+                        <td data-label="Input"><audio controls preload="none" src="assets/listening-test-v4/14_testB_mixed-0044_dsp_qwen_vague/input.wav"></audio></td>
+                        <td data-label="SAO"><audio controls preload="none" src="assets/listening-test-v4/14_testB_mixed-0044_dsp_qwen_vague/sao_instruct.wav"></audio></td>
+                        <td data-label="EchoEdit+"><audio controls preload="none" src="assets/listening-test-v4/14_testB_mixed-0044_dsp_qwen_vague/echoedit_plus.wav"></audio></td>
+                        <td data-label="SDEdit+Sketch"><audio controls preload="none" src="assets/listening-test-v4/14_testB_mixed-0044_dsp_qwen_vague/sdedit_rms.wav"></audio></td>
+                        <td class="ours" data-label="FoleyForge (ours)"><audio controls preload="none" src="assets/listening-test-v4/14_testB_mixed-0044_dsp_qwen_vague/our_tf_nit09_rg05.wav"></audio></td>
+                    </tr>
+                    <tr class="instruction-row">
+                        <th colspan="5" scope="colgroup">Instruction: Add a large hall reverb with a long decay time to create a cavernous, echoing impression of the pouring oil.</th>
+                    </tr>
+                    <tr class="audio-row">
+                        <td data-label="Input"><audio controls preload="none" src="assets/listening-test-v4/15_testB_mixed-0046_dsp_qwen_specific/input.wav"></audio></td>
+                        <td data-label="SAO"><audio controls preload="none" src="assets/listening-test-v4/15_testB_mixed-0046_dsp_qwen_specific/sao_instruct.wav"></audio></td>
+                        <td data-label="EchoEdit+"><audio controls preload="none" src="assets/listening-test-v4/15_testB_mixed-0046_dsp_qwen_specific/echoedit_plus.wav"></audio></td>
+                        <td data-label="SDEdit+Sketch"><audio controls preload="none" src="assets/listening-test-v4/15_testB_mixed-0046_dsp_qwen_specific/sdedit_rms.wav"></audio></td>
+                        <td class="ours" data-label="FoleyForge (ours)"><audio controls preload="none" src="assets/listening-test-v4/15_testB_mixed-0046_dsp_qwen_specific/our_tf_nit09_rg05.wav"></audio></td>
+                    </tr>
+                    <tr class="instruction-row">
+                        <th colspan="5" scope="colgroup">Instruction: Make it sound like it&#x27;s coming from the bottom of the ocean.</th>
+                    </tr>
+                    <tr class="audio-row">
+                        <td data-label="Input"><audio controls preload="none" src="assets/listening-test-v4/16_testB_mixed-0051_custom_human_vague/input.wav"></audio></td>
+                        <td data-label="SAO"><audio controls preload="none" src="assets/listening-test-v4/16_testB_mixed-0051_custom_human_vague/sao_instruct.wav"></audio></td>
+                        <td data-label="EchoEdit+"><audio controls preload="none" src="assets/listening-test-v4/16_testB_mixed-0051_custom_human_vague/echoedit_plus.wav"></audio></td>
+                        <td data-label="SDEdit+Sketch"><audio controls preload="none" src="assets/listening-test-v4/16_testB_mixed-0051_custom_human_vague/sdedit_rms.wav"></audio></td>
+                        <td class="ours" data-label="FoleyForge (ours)"><audio controls preload="none" src="assets/listening-test-v4/16_testB_mixed-0051_custom_human_vague/our_tf_nit09_rg05.wav"></audio></td>
+                    </tr>
+                    <tr class="instruction-row">
+                        <th colspan="5" scope="colgroup">Instruction: More aggressive and immediate impact.</th>
+                    </tr>
+                    <tr class="audio-row">
+                        <td data-label="Input"><audio controls preload="none" src="assets/listening-test-v4/18_testB_mixed-0056_dsp_qwen_vague/input.wav"></audio></td>
+                        <td data-label="SAO"><audio controls preload="none" src="assets/listening-test-v4/18_testB_mixed-0056_dsp_qwen_vague/sao_instruct.wav"></audio></td>
+                        <td data-label="EchoEdit+"><audio controls preload="none" src="assets/listening-test-v4/18_testB_mixed-0056_dsp_qwen_vague/echoedit_plus.wav"></audio></td>
+                        <td data-label="SDEdit+Sketch"><audio controls preload="none" src="assets/listening-test-v4/18_testB_mixed-0056_dsp_qwen_vague/sdedit_rms.wav"></audio></td>
+                        <td class="ours" data-label="FoleyForge (ours)"><audio controls preload="none" src="assets/listening-test-v4/18_testB_mixed-0056_dsp_qwen_vague/our_tf_nit09_rg05.wav"></audio></td>
+                    </tr>
+                    <tr class="instruction-row">
+                        <th colspan="5" scope="colgroup">Instruction: Replace the short, sharp barks with a long, drawn-out howl, like a wolf calling out in the forest.</th>
+                    </tr>
+                    <tr class="audio-row">
+                        <td data-label="Input"><audio controls preload="none" src="assets/listening-test-v4/19_testB_mixed-0074_natural_gemini_specific/input.wav"></audio></td>
+                        <td data-label="SAO"><audio controls preload="none" src="assets/listening-test-v4/19_testB_mixed-0074_natural_gemini_specific/sao_instruct.wav"></audio></td>
+                        <td data-label="EchoEdit+"><audio controls preload="none" src="assets/listening-test-v4/19_testB_mixed-0074_natural_gemini_specific/echoedit_plus.wav"></audio></td>
+                        <td data-label="SDEdit+Sketch"><audio controls preload="none" src="assets/listening-test-v4/19_testB_mixed-0074_natural_gemini_specific/sdedit_rms.wav"></audio></td>
+                        <td class="ours" data-label="FoleyForge (ours)"><audio controls preload="none" src="assets/listening-test-v4/19_testB_mixed-0074_natural_gemini_specific/our_tf_nit09_rg05.wav"></audio></td>
+                    </tr>
+                    <tr class="instruction-row">
+                        <th colspan="5" scope="colgroup">Instruction: I want this to be splashier</th>
+                    </tr>
+                    <tr class="audio-row">
+                        <td data-label="Input"><audio controls preload="none" src="assets/listening-test-v4/20_testB_mixed-0080_custom_human_concise/input.wav"></audio></td>
+                        <td data-label="SAO"><audio controls preload="none" src="assets/listening-test-v4/20_testB_mixed-0080_custom_human_concise/sao_instruct.wav"></audio></td>
+                        <td data-label="EchoEdit+"><audio controls preload="none" src="assets/listening-test-v4/20_testB_mixed-0080_custom_human_concise/echoedit_plus.wav"></audio></td>
+                        <td data-label="SDEdit+Sketch"><audio controls preload="none" src="assets/listening-test-v4/20_testB_mixed-0080_custom_human_concise/sdedit_rms.wav"></audio></td>
+                        <td class="ours" data-label="FoleyForge (ours)"><audio controls preload="none" src="assets/listening-test-v4/20_testB_mixed-0080_custom_human_concise/our_tf_nit09_rg05.wav"></audio></td>
+                    </tr>
+                </tbody>
+            </table>
+<!-- GENERATED:comparison-table END -->
+            </div>
+        </div>
+        <div id="model-demo">
+            <h2>Demo</h2>
+            <p class="section-note">We pre-computed some combinations of controls here! Try it yourself to move the controls and "regenerate" the audio.</p>
+        </div>
+        <div id="bibtex-entry">
+            <h2>Cite</h2>
+            <p class="section-note">If you find anything here useful, consider citing our work</p>
+            Coming soon!
+        </div>
+    </body>
 </html>
 
