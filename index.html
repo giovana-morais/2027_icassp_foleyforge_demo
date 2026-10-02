@@ -21,10 +21,9 @@
     <body>
         <nav id="menu">
             <a href="">paper</a>
-            <!-- <a href="#results">results</a> -->
+            <a href="#results">results</a>
             <a href="#ablations">ablations</a>
             <a href="#model-comparison">model comparison</a>
-            <a href="#model-demo">try it yourself!</a>
             <a href="#bibtex-entry">cite</a>
         </nav>
         <div id="abstract">
@@ -32,67 +31,54 @@
             We present FoleyForge, a generative model for instruction-based editing of sound effects. Given an input clip and a free-form instruction describing the desired change, it applies the edit while preserving the input's identity. A single model handles semantic, stylistic, and DSP-like changes. We introduce a data pipeline that guides an audio language model to author both DSP-based acoustic edits and similarity-preserving semantic edits, thus addressing the lack of publicly available audio editing data. Such data is then used to fine-tune a rectified-flow audio generation model, which we extend to expose attribute controls for loudness change, edit strength, and an input-derived contour envelope, each tunable via classifier-free guidance, yielding a more expressive editing model. FoleyForge achieves state-of-the-art instruction adherence at competitive audio quality and source faithfulness.
             <img src="assets/image/full_pipeline_v3.png" id="full_pipeline" alt="diagram showcasing model pipeline.">
         </div>
-        <!-- <div id="results"> -->
-        <!--     <h2>Results</h2> -->
-        <!-- </div> -->
+        <div id="results">
+            <h2>Results</h2>
+        </div>
         <div id="ablations">
             <h2>Ablations</h2>
             <p class="section-note">For a single pair of input audio and edit instruction, we show </p>
             Input audio:
             <br>
-            Edit Instruction:
+            Input caption: "Deep seal groan"
             <br>
-<!-- GENERATED:ablation-specs START (placeholder images; swap srcs for real per-parameter spectrograms) -->
-            <h3>Loudness</h3>
+            Edit Instruction: "Make it sound like it's coming from the bottom of the ocean"
+            <br>
+            <h3>Loudness (envelope off)</h3>
             <div class="spec-row">
-                <figure class="spec-item"><img src="assets/image/placeholder_spec.png" alt="Loudness ablation spectrogram 1."><figcaption>1</figcaption></figure>
-                <figure class="spec-item"><img src="assets/image/placeholder_spec.png" alt="Loudness ablation spectrogram 2."><figcaption>2</figcaption></figure>
-                <figure class="spec-item"><img src="assets/image/placeholder_spec.png" alt="Loudness ablation spectrogram 3."><figcaption>3</figcaption></figure>
-                <figure class="spec-item"><img src="assets/image/placeholder_spec.png" alt="Loudness ablation spectrogram 4."><figcaption>4</figcaption></figure>
-                <figure class="spec-item"><img src="assets/image/placeholder_spec.png" alt="Loudness ablation spectrogram 5."><figcaption>5</figcaption></figure>
+                <figure class="spec-item"><img src="assets/image/controls/mixed-0051/v1_free_dl_-24.png" alt="Loudness ablation spectrogram 1."><audio controls preload="none" src="assets/audio/controls/mixed-0051/v1_free_dl_-24.wav"></audio><figcaption>-24 dB</figcaption></figure>
+                <figure class="spec-item"><img src="assets/image/controls/mixed-0051/v1_free_dl_p0.png" alt="Loudness ablation spectrogram 2."><audio controls preload="none" src="assets/audio/controls/mixed-0051/v1_free_dl_p0.wav"></audio><figcaption>0 dB</figcaption></figure>
+                <figure class="spec-item"><img src="assets/image/controls/mixed-0051/v1_free_dl_p24.png" alt="Loudness ablation spectrogram 3."><audio controls preload="none" src="assets/audio/controls/mixed-0051/v1_free_dl_p24.wav"></audio><figcaption>+24 dB</figcaption></figure>
             </div>
-            <h3>SILA</h3>
+            <h3>SILA (envelope off)</h3>
             <div class="spec-row">
-                <figure class="spec-item"><img src="assets/image/placeholder_spec.png" alt="SILA ablation spectrogram 1.">
+                <figure class="spec-item"><img src="assets/image/controls/mixed-0051/input.png" alt="SILA ablation spectrogram 1."><audio controls preload="none" src="assets/audio/controls/mixed-0051/input.wav"></audio>
                     <figcaption>None</figcaption>
                 </figure>
                 <figure class="spec-item">
-                    <img src="assets/image/placeholder_spec.png" alt="SILA ablation spectrogram 2.">
+                    <img src="assets/image/controls/mixed-0051/v1_free_sila_a_subtle_edit.png" alt="SILA ablation spectrogram 2."><audio controls preload="none" src="assets/audio/controls/mixed-0051/v1_free_sila_a_subtle_edit.wav"></audio>
                     <figcaption>Subtle</figcaption>
                 </figure>
-                <figure class="spec-item"><img src="assets/image/placeholder_spec.png" alt="SILA ablation spectrogram 1.">
+                <figure class="spec-item"><img src="assets/image/controls/mixed-0051/v1_free_sila_a_moderate_edit.png" alt="SILA ablation spectrogram 1."><audio controls preload="none" src="assets/audio/controls/mixed-0051/v1_free_sila_a_moderate_edit.wav"></audio>
                     <figcaption>Moderate</figcaption>
                 </figure>
                 <figure class="spec-item">
-                    <img src="assets/image/placeholder_spec.png" alt="SILA ablation spectrogram 2.">
+                    <img src="assets/image/controls/mixed-0051/v1_free_sila_a_pronounced_edit.png" alt="SILA ablation spectrogram 2."><audio controls preload="none" src="assets/audio/controls/mixed-0051/v1_free_sila_a_pronounced_edit.wav"></audio>
                     <figcaption>Pronounced</figcaption>
                 </figure>
                 <figure class="spec-item">
-                    <img src="assets/image/placeholder_spec.png" alt="SILA ablation spectrogram 2.">
+                    <img src="assets/image/controls/mixed-0051/v1_free_sila_a_drastic_edit.png" alt="SILA ablation spectrogram 2."><audio controls preload="none" src="assets/audio/controls/mixed-0051/v1_free_sila_a_drastic_edit.wav"></audio>
                     <figcaption>Drastic</figcaption>
                 </figure>
             </div>
-            <h3>Edit Strength</h3>
+            <h3>Edit Strength (envelope off)</h3>
             <div class="spec-row">
-                <figure class="spec-item"><img src="assets/image/placeholder_spec.png" alt="Edit strength ablation spectrogram 1."><figcaption>1</figcaption></figure>
-                <figure class="spec-item"><img src="assets/image/placeholder_spec.png" alt="Edit strength ablation spectrogram 2."><figcaption>2</figcaption></figure>
-                <figure class="spec-item"><img src="assets/image/placeholder_spec.png" alt="Edit strength ablation spectrogram 3."><figcaption>3</figcaption></figure>
-                <figure class="spec-item"><img src="assets/image/placeholder_spec.png" alt="Edit strength ablation spectrogram 4."><figcaption>4</figcaption></figure>
-                <figure class="spec-item">
-                    <img src="assets/image/placeholder_spec.png" alt="Edit strength ablation spectrogram 5."><figcaption>5</figcaption></figure>
+                <figure class="spec-item"><img src="assets/image/controls/mixed-0051/v1_free_str_0.png" alt="Edit strength ablation."><audio controls preload="none" src="assets/audio/controls/mixed-0051/v1_free_str_0.wav"></audio><figcaption>0</figcaption></figure>
+                <figure class="spec-item"><img src="assets/image/controls/mixed-0051/v1_free_str_0.3.png" alt="Edit strength ablation spectrogram 2."><audio controls preload="none" src="assets/audio/controls/mixed-0051/v1_free_str_0.3.wav"></audio><figcaption>0.3</figcaption></figure>
+                <figure class="spec-item"><img src="assets/image/controls/mixed-0051/v1_free_str_0.6.png" alt="Edit strength ablation spectrogram 3."><audio controls preload="none" src="assets/audio/controls/mixed-0051/v1_free_str_0.6.wav"></audio><figcaption>0.6</figcaption></figure>
+                <figure class="spec-item"><img src="assets/image/controls/mixed-0051/v1_free_str_1.png" alt="Edit strength ablation spectrogram 4."><audio controls preload="none" src="assets/audio/controls/mixed-0051/v1_free_str_1.wav"></audio><figcaption>1</figcaption></figure>
+                <figure class="spec-item"> <img src="assets/image/controls/mixed-0051/v1_free_str_1.5.png" alt="Edit strength ablation spectrogram 5."><audio controls preload="none" src="assets/audio/controls/mixed-0051/v1_free_str_1.5.wav"></audio><figcaption>1.5</figcaption></figure>
+                <figure class="spec-item"> <img src="assets/image/controls/mixed-0051/v1_free_str_2.png" alt="Edit strength ablation spectrogram 5."><audio controls preload="none" src="assets/audio/controls/mixed-0051/v1_free_str_2.wav"></audio><figcaption>2</figcaption></figure>
             </div>
-            <h3>Envelope Following</h3>
-            <div class="spec-row">
-                <figure class="spec-item">
-                        <img src="assets/image/placeholder_spec.png" alt="Envelope following ablation spectrogram 4.">
-                        <figcaption>On</figcaption>
-                </figure>
-                <figure class="spec-item">
-                    <img src="assets/image/placeholder_spec.png" alt="Envelope following ablation spectrogram 5.">
-                    <figcaption>Off</figcaption>
-                </figure>
-            </div>
-<!-- GENERATED:ablation-specs END -->
         </div>
         <div id="model-comparison">
             <h2>Model Comparison</h2>
@@ -264,10 +250,6 @@
             </table>
 <!-- GENERATED:comparison-table END -->
             </div>
-        </div>
-        <div id="model-demo">
-            <h2>Demo</h2>
-            <p class="section-note">We pre-computed some combinations of controls here! Try it yourself to move the controls and "regenerate" the audio.</p>
         </div>
         <div id="bibtex-entry">
             <h2>Cite</h2>
